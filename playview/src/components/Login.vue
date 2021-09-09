@@ -4,7 +4,7 @@
 		<div class="login_box">
 			<!-- logo头像 -->
 			<div class="avatar_box">
-				<img src="../assets/logo.png" />
+				<img src="../assets/sportlogo.jpg" />
 			</div>
 			<!-- 表单区域 -->
 			<el-form ref="loginFormRef" :rules="loginRules" :model="loginForm" label-width="0" class="login_form">
@@ -68,7 +68,7 @@
 					// console.log(res)
 					if( res.flag == "ok"){
 						this.$message.success("操作成功！！！");//信息提示
-						this.$router.push({path:"/home"});// 页面路由跳转
+						await this.$router.push({path:"/home"});// 页面路由跳转
 						window.sessionStorage.setItem("user",res.user);//存储user对象
 					}else{
 						this.$message.error("操作失败！！！");// 错误提示
