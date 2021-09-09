@@ -1,0 +1,79 @@
+{
+  "id": "2786610",
+  "name": "playview",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "18494112",
+      "name": "用户列表",
+      "font_class": "yonghuliebiao",
+      "unicode": "e7f1",
+      "unicode_decimal": 59377
+    },
+    {
+      "icon_id": "435924",
+      "name": "卡路里",
+      "font_class": "qialuli",
+      "unicode": "e7b4",
+      "unicode_decimal": 59316
+    },
+    {
+      "icon_id": "688095",
+      "name": "商品 购物袋",
+      "font_class": "shangpingouwudai",
+      "unicode": "e788",
+      "unicode_decimal": 59272
+    },
+    {
+      "icon_id": "993258",
+      "name": "密码",
+      "font_class": "mima",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "1411060",
+      "name": "13科普宣传",
+      "font_class": "kepuxuanchuan",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "11810477",
+      "name": "管理员",
+      "font_class": "guanliyuan",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "15419736",
+      "name": "权限",
+      "font_class": "quanxian",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "20891572",
+      "name": "智能配餐",
+      "font_class": "zhinengpeican",
+      "unicode": "e8af",
+      "unicode_decimal": 59567
+    },
+    {
+      "icon_id": "22630276",
+      "name": "健身",
+      "font_class": "jianshen",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "826097",
+      "name": "登录",
+      "font_class": "denglu",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    }
+  ]
+}

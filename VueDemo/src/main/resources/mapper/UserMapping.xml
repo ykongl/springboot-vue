@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.vueDemo.dao.UserDao">
+    <select id="getUserByMassage" resultType="com.example.vueDemo.bean.User">
+        SELECT * FROM easyuser WHERE
+            username=#{username} AND password=#{password} AND state = 1
+    </select>
+
+    <select id="getAllUser" parameterType="com.example.vueDemo.bean.User"
+            resultType="com.example.vueDemo.bean.User">
+    SELECT id,username,password,email,role,state
+    FROM easyuser
+    <where>
+        <if test="username != null">
+            username like "%"#{username}"%"
+        </if>
+    </where>
+    LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getUserCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM easyuser
+        <where>
+            <if test="username != null">
+                username like "%"#{username}"%"
+            </if>
+        </where>
+    </select>
+    <update id="updateState" parameterType="com.example.vueDemo.bean.User">
+    UPDATE easyuser
+    SET
+    state = #{state}
+    WHERE id = #{id}
+    </update>
+
+    <insert id="insertUser" parameterType="com.example.vueDemo.bean.User">
+    INSERT easyuser
+    (username,password,email,role,state)
+    VALUES
+    (#{username},#{password},#{email},#{role},#{state})
+    </insert>
+
+    <delete id="deleteUser" parameterType="com.example.vueDemo.bean.User">
+        DELETE
+        FROM easyuser
+        WHERE id = #{id}
+    </delete>
+
+    <select id="selectUserById" parameterType="com.example.vueDemo.bean.User"
+    resultType="com.example.vueDemo.bean.User">
+        SELECT id,username,password,email,role,state
+        FROM easyuser
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateUser" parameterType="com.example.vueDemo.bean.User">
+        UPDATE easyuser
+        SET
+        username = #{username},
+        password = #{password},
+        email = #{email},
+        role = #{role}
+        WHERE id = #{id}
+    </update>
+</mapper>
