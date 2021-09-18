@@ -52,7 +52,7 @@ public interface UserDao {
     /**
      * 获取用户详情
      */
-    public User selectUserById(int id);
+    public User selectUserById(User user);
 
     /**
      * 修改用户
@@ -60,4 +60,8 @@ public interface UserDao {
     public int updateUser(User user);
 
 
+    /**
+     * 角色下拉框
+     */
+    public List<User> selectRole(User user);
 }

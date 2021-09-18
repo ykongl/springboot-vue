@@ -9,12 +9,15 @@
 
     <select id="getAllUser" parameterType="com.example.vueDemo.bean.User"
             resultType="com.example.vueDemo.bean.User">
-    SELECT id,username,password,email,role,state
-    FROM easyuser
+    SELECT a.id,username,password,email,b.role,state
+    FROM easyuser a
+    LEFT JOIN role b
+    ON a.roleId = b.roleId
     <where>
         <if test="username != null">
             username like "%"#{username}"%"
         </if>
+        AND delete_flag = '0'
     </where>
     LIMIT #{pageStart},#{pageSize}
     </select>
@@ -27,6 +30,7 @@
             </if>
         </where>
     </select>
+
     <update id="updateState" parameterType="com.example.vueDemo.bean.User">
     UPDATE easyuser
     SET
@@ -36,21 +40,22 @@
 
     <insert id="insertUser" parameterType="com.example.vueDemo.bean.User">
     INSERT easyuser
-    (username,password,email,role,state)
+    (username,password,email,roleId,delete_flag)
     VALUES
-    (#{username},#{password},#{email},#{role},#{state})
+    (#{username},#{password},#{email},#{roleId},'0')
     </insert>
 
     <delete id="deleteUser" parameterType="com.example.vueDemo.bean.User">
-        DELETE
-        FROM easyuser
+        UPDATE easyuser
+        SET
+        delete_flag = '1'
         WHERE id = #{id}
     </delete>
 
     <select id="selectUserById" parameterType="com.example.vueDemo.bean.User"
     resultType="com.example.vueDemo.bean.User">
-        SELECT id,username,password,email,role,state
-        FROM easyuser
+        SELECT id,username,password,email,roleId,state
+        FROM easyuser a
         WHERE id = #{id}
     </select>
 
@@ -59,8 +64,13 @@
         SET
         username = #{username},
         password = #{password},
-        email = #{email},
-        role = #{role}
+        email = #{email}
         WHERE id = #{id}
     </update>
+
+    <select id="selectRole" parameterType="com.example.vueDemo.bean.User"
+            resultType="com.example.vueDemo.bean.User">
+        SELECT role,roleId
+        FROM role
+    </select>
 </mapper>

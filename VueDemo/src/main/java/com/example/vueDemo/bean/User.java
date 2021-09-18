@@ -17,5 +17,10 @@ public class User {
     private String email;//邮箱
     private String role;//角色
     private boolean state;//状态
+    private String query;//查询信息 username
+    private int pageNum = 1;//当前页
+    private int pageSize = 10;//没页最大数
+    private int roleId;
+    private boolean isVip;//是否是會員
 
 }

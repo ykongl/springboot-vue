@@ -2,6 +2,7 @@ package com.example.vueDemo.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.example.vueDemo.bean.MainMenu;
+import com.example.vueDemo.bean.User;
 import com.example.vueDemo.dao.MenuDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

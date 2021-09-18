@@ -1,7 +1,6 @@
 package com.example.vueDemo.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.example.vueDemo.bean.QueryInfo;
 import com.example.vueDemo.bean.User;
 import com.example.vueDemo.dao.UserDao;
 import org.springframework.web.bind.annotation.*;
@@ -22,15 +21,15 @@ public class UserController {
 
     /**
      * 获取用户列表
-     * @param queryInfo
+     * @param user
      * @return
      */
 
     @GetMapping("/list")
-    public String getUserList(QueryInfo queryInfo){
-        int number = userDao.getUserCounts(queryInfo.getQuery());//用户数量
-        int pageStart = (queryInfo.getPageNum() - 1) * queryInfo.getPageSize();//分页
-        List<User> allUser = userDao.getAllUser(queryInfo.getQuery(), pageStart, queryInfo.getPageSize());
+    public String getUserList(User user){
+        int number = userDao.getUserCounts(user.getQuery());//用户数量
+        int pageStart = (user.getPageNum() - 1) * user.getPageSize();//分页
+        List<User> allUser = userDao.getAllUser(user.getUsername(),pageStart,user.getPageSize());
         HashMap<String, Object> res = new HashMap<>();
         res.put("number",number);
         res.put("data",allUser);
@@ -57,7 +56,6 @@ public class UserController {
      */
     @PostMapping("/insertUser")
     public String InsertUser(@RequestBody User user){
-        user.setRole("普通用户");
         user.setState(false);
         int i = userDao.insertUser(user);
         return i > 0 ? "success":"error";
@@ -74,16 +72,40 @@ public class UserController {
         return i > 0 ? "success" : "error";
     }
 
+    /**
+     * 詳情
+     * @param user
+     * @return
+     */
     @GetMapping("/userId")
-    public User selectUserById(int id){
-        User user = userDao.selectUserById(id);
-        return user;
+    public User selectUserById(User user){
+        User user1 = userDao.selectUserById(user);
+        return user1;
     }
 
+    /**
+     * 保存更新
+     * @param user
+     * @return
+     */
     @PostMapping("/editUser")
     public String updateUser(@RequestBody User user){
         int i = userDao.updateUser(user);
         return i > 0 ? "success" : "error";
+    }
+
+    /**
+     * 角色下拉框
+     * @param user
+     * @return
+     */
+    @GetMapping("/role")
+    public String selectRole(User user){
+        List<User> users = userDao.selectRole(user);
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("data",users);
+        String s = JSON.toJSONString(res);
+        return s;
     }
 
 }
