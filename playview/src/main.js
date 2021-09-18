@@ -11,7 +11,7 @@ import axios from 'axios'
 // 挂载axios 到Vue的原型prototype的$http
 Vue.prototype.$http = axios
 // 设置请求的根路径
-axios.defaults.baseURL = "http://localhost:9000"
+axios.defaults.baseURL = "http://localhost:9001"
 // axios.interceptors.request.use(config => {
 //   console.log(config);
 //   // 请求头挂载信息
