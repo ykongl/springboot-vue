@@ -72,12 +72,23 @@
           <el-form-item label="用户名：" prop="username">
             <el-input v-model="addForm.username"></el-input>
           </el-form-item>
-          <el-form-item label="密码：" prop="username">
+          <el-form-item label="密码：" prop="password">
             <el-input v-model="addForm.password"></el-input>
           </el-form-item>
-          <el-form-item label="邮箱：" prop="username">
+          <el-form-item label="邮箱：" prop="email">
             <el-input v-model="addForm.email"></el-input>
           </el-form-item>
+          <el-form-item label="角色：" prop="roleId">
+            <el-select v-model="addForm.roleId" clearable placeholder="请选择">
+              <el-option
+                  v-for="item in options"
+                  :key="item.roleId"
+                  :label="item.role"
+                  :value="item.roleId">
+              </el-option>
+            </el-select>
+          </el-form-item>
+
         </el-form>
         <!-- 内容底部区域    -->
         <span slot="footer" class="dialog-footer">
@@ -98,6 +109,16 @@
           <el-form-item label="邮箱：" prop="username">
             <el-input v-model="editForm.email"></el-input>
           </el-form-item>
+          <el-form-item label="角色：" prop="roleId">
+            <el-select v-model="editForm.roleId" @click="selectRole">
+              <el-option
+                  v-for="item in options"
+                  :key="item.roleId"
+                  :label="item.role"
+                  :value="item.roleId">
+              </el-option>
+            </el-select>
+          </el-form-item>
         </el-form>
         <!-- 内容底部区域    -->
         <span slot="footer" class="dialog-footer">
@@ -115,6 +136,10 @@ export default {
   name: "UserList",
   data(){
     return{
+      options: [{
+        roleId: '',
+        role: ''
+      }],
       // 查询信息实体
       queryInfo:{
         query:"",//信息
@@ -134,21 +159,25 @@ export default {
       addForm:{
         username:"",
         password:"",
-        email:""
+        email:"",
+        roleId:""
       },
       //表单校验
       addFormRules:{
         username:[
           {required: true,message:"请输入用户名",trigger:"blur"},
-          {min: 3,max: 6,message:"长度在 3 到 6 个字符串",trigger:"blur"},
+          {min: 3,max: 12,message:"长度在 3 到 12 个字符串",trigger:"blur"},
         ],
         password: [
           {required:true,message:"请输入密码",trigger:"blur"},
-          {min:6,max:18,message:"长度在 6 到 18 个字符串",trigger:"blur"}
+          {min:6,max:24,message:"长度在 6 到 24 个字符串",trigger:"blur"}
         ],
         email: [
           {required:true,message:"请输入邮箱",trigger:"blur"},
           {min:6,max:18,message:"请输入正确的邮箱地址",trigger:"blur"}
+        ],
+        roleId: [
+          {required:true,message:"请選擇角色",trigger:"blur"},
         ]
       },
 
@@ -157,8 +186,16 @@ export default {
   },
   created() {
       this.getUserList();
+      this.selectRole();
   },
   methods:{
+    //角色下拉框
+    async selectRole(){
+      const {data:res} = await this.$http.get("/User/role")
+      this.options = res.data;
+    },
+
+
     //获取所有用户
     async getUserList(){
       const {data:res} = await

@@ -5,9 +5,12 @@
 	  <el-header>
 		  <div>
 			  <img src="../assets/sportlogo.jpg" alt/>
-			  <span>个人运动平台</span>
+			  <span>SPORT</span>
 		  </div>
-		  <el-button type="info" @click="logout">安全退出</el-button>
+      <div>
+        <span style="margin-right: 15px">{{username}}</span>
+        <el-button type="info" @click="logout">安全退出</el-button>
+      </div>
 	  </el-header>
 	  <!-- 主体 -->
 	  <el-container>
@@ -40,11 +43,11 @@
 	  </el-container>
 	</el-container>
 </template>
-
 <script>
-  export default{
+export default{
 	  data(){
 		  return{
+        username:"admin",
 			  //菜单列表
 			  menuList:[],
         isCollapse:false,
@@ -52,13 +55,15 @@
         iconsObject:{
 			    '100':'iconfont icon-guanliyuan',
 			    '200':'iconfont icon-jianshen',
+          '300':'iconfont icon-shangpingouwudai',
 			    '101':'iconfont icon-yonghuliebiao',
 			    '102':'iconfont icon-quanxian',
-			    '103':'iconfont icon-jianshen',
-			    '104':'iconfont icon-shangpingouwudai',
+          '103':'iconfont icon-vip',
 			    '201':'iconfont icon-kepuxuanchuan',
 			    '202':'iconfont icon-qialuli',
-			    '203':'iconfont icon-zhinengpeican',
+          '203':'iconfont icon-jianshen',
+          '301':'iconfont icon-shangpingouwudai',
+			    '302':'iconfont icon-zhinengpeican',
         },
         activePath:"/welcome",// 默认路径
 		  }
@@ -66,10 +71,10 @@
 	  
 	  // onload事件
 	  created() {
-		  //查询menuList
-		  this.getMenuList();
-		  this.activePath = window.sessionStorage.getItem('activePath');//取出session里的path动态修改
-	  },
+      //查询menuList
+      this.getMenuList();
+      this.activePath = window.sessionStorage.getItem('activePath');//取出session里的path动态修改
+    },
 	  methods:{
 		  //安全退出
 		  logout(){
@@ -116,6 +121,8 @@
 			align-items: center;
 			span{
 				margin-left: 15px;
+        font-size: 20px;
+        font-style: italic;
 			}
 		}
 		
