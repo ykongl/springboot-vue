@@ -10,11 +10,11 @@
 			<el-form ref="loginFormRef" :rules="loginRules" :model="loginForm" label-width="0" class="login_form">
 				<!-- 用户名 -->
 				<el-form-item prop="username">
-					<el-input v-model="loginForm.username" prefix-icon="iconfont icon-denglu"></el-input>
+					<el-input v-model="loginForm.username" prefix-icon="iconfont icon-denglu" placeholder="用戶名"></el-input>
 				</el-form-item>
 				<!-- 密码 -->
 				<el-form-item prop="password">
-					<el-input v-model="loginForm.password" prefix-icon="iconfont icon-mima" type="password"></el-input>
+					<el-input v-model="loginForm.password" prefix-icon="iconfont icon-mima" type="password" placeholder="密碼"></el-input>
 				</el-form-item>
 				<!-- 按钮 -->
 				<el-form-item class="btns">
@@ -32,8 +32,8 @@
 			return{
 				// 表单数据
 				loginForm:{
-					username:"admin",
-					password:"123456"
+					username:"",
+					password:""
 				},
 				// 验证对象
 				loginRules:{
@@ -50,7 +50,8 @@
 			};
 		},
 		methods:{
-			//重置表单内容
+
+      //重置表单内容
 			resetLoginForm(){
 				this.$refs.loginFormRef.resetFields();
 			},
@@ -82,8 +83,12 @@
 
 <style lang="less" scoped>
 	.login_container{
-		background-color: #2b4b6b;
-		height: 100%;
+    background: url("../assets/sportback.jpg") no-repeat;
+    /**添加以下css */
+    height: 100%; //大小设置为100%
+    width: 100%; //大小设置为100%
+    position: fixed;
+    background-size: 100% 100%;
 	}
 	.login_box{
 		width: 450px;
