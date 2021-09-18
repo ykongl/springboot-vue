@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "10199527",
+      "name": "vip",
+      "font_class": "vip",
+      "unicode": "e716",
+      "unicode_decimal": 59158
+    },
+    {
       "icon_id": "18494112",
       "name": "用户列表",
       "font_class": "yonghuliebiao",
