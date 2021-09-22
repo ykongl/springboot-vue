@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 import Welcome from "../components/Welcome.vue"
-import UserList from "../components/admin/UserList.vue"
+import UserList from "../components/User/UserList.vue"
+import UserVipList from "../components/User/UserVipList";
 
 
 Vue.use(VueRouter)
@@ -30,6 +31,10 @@ const routes = [
 				path:"/user",
 				component: UserList,
 			},
+			{
+				path:"/userVip",
+				component: UserVipList,
+			}
 		]
 
 	},

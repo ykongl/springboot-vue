@@ -56,6 +56,7 @@ export default{
 			    '100':'iconfont icon-guanliyuan',
 			    '200':'iconfont icon-jianshen',
           '300':'iconfont icon-shangpingouwudai',
+          '400':'iconfont icon-shangpingouwudai',
 			    '101':'iconfont icon-yonghuliebiao',
 			    '102':'iconfont icon-quanxian',
           '103':'iconfont icon-vip',
