@@ -27,7 +27,7 @@ public class UserController {
 
     @GetMapping("/list")
     public String getUserList(User user){
-        int number = userDao.getUserCounts(user.getQuery());//用户数量
+        int number = userDao.getUserCounts(user);//用户数量
         int pageStart = (user.getPageNum() - 1) * user.getPageSize();//分页
         List<User> allUser = userDao.getAllUser(user.getUsername(),pageStart,user.getPageSize());
         HashMap<String, Object> res = new HashMap<>();

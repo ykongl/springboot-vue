@@ -31,7 +31,7 @@ public interface UserDao {
     /**
      * 获取所有的用户个数
      */
-    public int getUserCounts(@Param("username")String username);
+    public int getUserCounts(User user);
 
     /**
      * 修改用户状态
